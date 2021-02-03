@@ -11,6 +11,110 @@ void displayNumbersInVector( const vector<int>& v )
     cout << endl;
 }
 
+void stage7(){
+    cout << " +----+     " << endl;
+    cout << " |    |     " << endl;
+    cout << " |    O     " << endl;
+    cout << " |   /|\\   " << endl;
+    cout << " |    |     " << endl;
+    cout << " |   / \\   " << endl;
+    cout << " |   R.I.P. " << endl;
+    cout << " ========== " << endl;
+}
+
+void stage6(){
+    cout << " +----+     " << endl;
+    cout << " |    |     " << endl;
+    cout << " |    O     " << endl;
+    cout << " |   /|\\   " << endl;
+    cout << " |    |     " << endl;
+    cout << " |   /      " << endl;
+    cout << " |          " << endl;
+    cout << " ========== " << endl;
+}
+
+void stage5(){
+    cout << " +----+     " << endl;
+    cout << " |    |     " << endl;
+    cout << " |    O     " << endl;
+    cout << " |   /|\\   " << endl;
+    cout << " |    |     " << endl;
+    cout << " |          " << endl;
+    cout << " |          " << endl;
+    cout << " ========== " << endl;
+}
+
+void stage4(){
+    cout << " +----+     " << endl;
+    cout << " |    |     " << endl;
+    cout << " |    O     " << endl;
+    cout << " |   /|\\   " << endl;
+    cout << " |          " << endl;
+    cout << " |          " << endl;
+    cout << " |          " << endl;
+    cout << " ========== " << endl;
+}
+
+void stage3(){
+    cout << " +----+     " << endl;
+    cout << " |    |     " << endl;
+    cout << " |    O     " << endl;
+    cout << " |   /|     " << endl;
+    cout << " |          " << endl;
+    cout << " |          " << endl;
+    cout << " |          " << endl;
+    cout << " ========== " << endl;
+}
+
+void stage2(){
+    cout << " +----+     " << endl;
+    cout << " |    |     " << endl;
+    cout << " |    O     " << endl;
+    cout << " |   /      " << endl;
+    cout << " |          " << endl;
+    cout << " |          " << endl;
+    cout << " |          " << endl;
+    cout << " ========== " << endl;
+}
+
+void stage1(){
+    cout << " +----+     " << endl;
+    cout << " |    |     " << endl;
+    cout << " |    O     " << endl;
+    cout << " |          " << endl;
+    cout << " |          " << endl;
+    cout << " |          " << endl;
+    cout << " |          " << endl;
+    cout << " ========== " << endl;
+}
+
+void stage0(){
+    cout << " +----+     " << endl;
+    cout << " |    |     " << endl;
+    cout << " |          " << endl;
+    cout << " |          " << endl;
+    cout << " |          " << endl;
+    cout << " |          " << endl;
+    cout << " |          " << endl;
+    cout << " ========== " << endl;
+}
+
+void displayHangman(int stage)
+{
+ switch(stage)
+ {
+    case 7: stage7(); break;
+    case 6: stage6(); break;
+    case 5: stage5(); break;
+    case 4: stage4(); break; 
+    case 3: stage3(); break; 
+    case 2: stage2(); break; 
+    case 1: stage1(); break; 
+    case 0: stage0(); break; 
+    }
+}
+
+
 void checkPositions(const string& secret,
                     char guess,
                     vector<int>& positions
@@ -52,14 +156,15 @@ void test3()
 
     fillWordInPositions( positions, charToFill, word );
     cout << "word becomes \"" << word << "\"." << endl;
-    //After calling function fillWordInPositions(...) above,
-    // the word will be filled at position 3 and 10 with char 'g'
-    // and thus the word should become : progra___ng
 }
 
 int main()
 {
     //test1();
     //test2();
-    test3();
+    //test3();
+    for(int i=0; i<7; i++)
+    {
+        displayHangman(i);
+    }
 } 
