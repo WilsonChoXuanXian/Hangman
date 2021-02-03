@@ -2,6 +2,8 @@
 #include <string>
 #include <vector>
 #include <cstdlib>
+#include <fstream>
+#include <ctime>
 using namespace std;
 
 void displayNumbersInVector( const vector<int>& v )
@@ -158,13 +160,57 @@ void test3()
     cout << "word becomes \"" << word << "\"." << endl;
 }
 
+string getSecret(){
+    string words[] = {"programming","multimedia","university","computer","worldwide",
+                      "putrajaya","sarawak"};
+    srand(time(NULL));
+    int r=rand()%8;
+    return words[r];
+
+}
+
+void hangman(){
+    
+        vector<int> positions;
+        string secret = getSecret();
+        string word(secret.length(),'_');
+        char guess;
+        int lastStage = 7;
+        int stage = 0;
+
+        system("clear");
+
+        displayHangman(stage);
+        cout << word << endl
+             << endl;
+        do
+        {
+            cout << "Guess the string => ";
+            cin >> guess;
+
+            checkPositions(secret, guess, positions);
+
+            fillWordInPositions(positions, guess, word);
+
+            if (positions.size() == 0)
+                stage += 1;
+            
+            system("clear");
+            displayHangman(stage);
+            cout << word << endl
+                 << endl;
+        }
+        while( secret != word && stage != lastStage );
+
+        if (stage == lastStage)
+            cout << "You are DEAD! " << endl;
+        else
+            cout << "Congratulation, you are safe! " << endl;
+}
+
 int main()
 {
-    //test1();
-    //test2();
-    //test3();
-    for(int i=0; i<7; i++)
-    {
-        displayHangman(i);
-    }
-} 
+    hangman();
+
+return 0;
+}
