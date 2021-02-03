@@ -25,39 +25,41 @@ void checkPositions(const string& secret,
     }
 }
 
-void test2()
+void fillWordInPositions( const vector<int>& positions,
+                          char charToFill,
+                          string& word )
 {
-    cout << "test function 2" << endl;
-    string secret= "programming";
-    char guess = 'g';
-
-    vector<int> positions; //declared positions to be a container of integers
-    checkPositions(secret, guess, positions);
-
-    cout << "character \'" << guess << "\' appears in string \""
-         << secret << "\" at position : ";
-
-    //After calling function checkPositions(...) above,
-    //  function displayNumbersInVector below should display: 3 10
-    //  because char 'g' appears in position 3 and 10 of string secret
+    // for (int i=0; i<positions.size(); i++)
+    //     word[positions[i]] = charToFill;
     
-    displayNumbersInVector( positions );
+    for (auto e : positions)
+        word[e] = charToFill;
 }
 
-void test1()
+void test3()
 {
-    cout << "test function 1" << endl;
-    vector<int> num;
-    num.push_back(1);
-    num.push_back(4);
-    num.push_back(3);
-    cout << "size = " << num.size() << endl;
-    cout << "number in container are : ";
-    displayNumbersInVector(num);
+    cout << "test function 3" << endl;
+    vector<int> positions;
+    positions.push_back(3);
+    positions.push_back(10);
+
+    string word= "pro_ra___n_";
+    char charToFill = 'g';
+
+    cout << "Original word is : \"" << word << "\"," << endl;
+    cout << "after filling char \'" << charToFill << "\' at position ";
+    displayNumbersInVector( positions );
+
+    fillWordInPositions( positions, charToFill, word );
+    cout << "word becomes \"" << word << "\"." << endl;
+    //After calling function fillWordInPositions(...) above,
+    // the word will be filled at position 3 and 10 with char 'g'
+    // and thus the word should become : progra___ng
 }
 
 int main()
 {
-    // test1();
-    test2();
-}
+    //test1();
+    //test2();
+    test3();
+} 
