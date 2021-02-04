@@ -172,6 +172,7 @@ string getSecret(){
 void hangman(){
     
         vector<int> positions;
+        vector<char> letterChosen;
         string secret = getSecret();
         string word(secret.length(),'_');
         char guess;
@@ -185,8 +186,31 @@ void hangman(){
              << endl;
         do
         {
-            cout << "Guess the string => ";
+            bool correct = 0;
+
+            cout << "Letters that you've chosen but not the secret word => ";
+
+            for (int i=0; i<letterChosen.size();i++)
+            {
+                cout << letterChosen[i];
+
+                if (i != letterChosen.size()-1)
+                    cout << ", ";
+            }
+
+            cout << endl << "Guess the string => ";
             cin >> guess;
+
+            for(int i=0; i<secret.length(); i++)
+                if (guess == secret[i])
+                    correct = 1;
+                    
+            for(int i=0; i<letterChosen.size(); i++)
+                if (guess == letterChosen[i])
+                    correct = 1;
+
+            if (!correct)
+                letterChosen.push_back(guess);
 
             checkPositions(secret, guess, positions);
 
@@ -208,9 +232,30 @@ void hangman(){
             cout << "Congratulation, you are safe! " << endl;
 }
 
+bool playAgn(){
+
+    bool TorF = false;
+    char YESorNO;
+
+    cout << endl << endl
+         << "Do you want to PLAY AGAIN ?  (y/n)" << endl;
+    cin >> YESorNO;
+
+    if (YESorNO == 'y')
+        TorF = true;
+    else TorF = false;
+
+return TorF;
+}
+
 int main()
 {
+    bool playAgain = false;
+
+    do{
     hangman();
+    playAgain = playAgn();
+    }while(playAgain);
 
 return 0;
 }
