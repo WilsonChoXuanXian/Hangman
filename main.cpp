@@ -179,7 +179,7 @@ void hangman(){
         int lastStage = 7;
         int stage = 0;
 
-        system("clear");
+        system("cls");
 
         displayHangman(stage);
         cout << word << endl
@@ -226,8 +226,10 @@ void hangman(){
         }
         while( secret != word && stage != lastStage );
 
-        if (stage == lastStage)
+        if (stage == lastStage) {
             cout << "You are DEAD! " << endl;
+            cout << "The secret word was \'" << secret << "\'" << endl;
+        }
         else
             cout << "Congratulation, you are safe! " << endl;
 }
